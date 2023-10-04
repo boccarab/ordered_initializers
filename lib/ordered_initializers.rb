@@ -1,4 +1,5 @@
-require 'initialize_me/rails'
+require 'ordered_initializers/parser'
+require 'ordered_initializers/rails'
 require 'parallel'
 
 module OrderedInitializers
