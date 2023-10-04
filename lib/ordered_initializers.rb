@@ -1,6 +1,5 @@
 require 'ordered_initializers/parser'
 require 'ordered_initializers/rails'
-require 'parallel'
 
 module OrderedInitializers
   class << self
@@ -11,8 +10,8 @@ module OrderedInitializers
 
   def go
     initializer_files.each do |item|
-
-    load_config_initializer(file)
+      load_config_initializer(file)
+    end
   end
 
   def load_config_initializer(initializer)
