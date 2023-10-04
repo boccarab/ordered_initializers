@@ -8,4 +8,7 @@ Gem::Specification.new "ordered_initializers" do |s|
   s.license     = "MIT"
 
   s.add_dependency "railties", ">= 3.2"
+
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rspec"
 end
