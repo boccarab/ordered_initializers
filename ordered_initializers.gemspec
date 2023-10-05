@@ -11,4 +11,5 @@ Gem::Specification.new "ordered_initializers" do |s|
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "appraisal"
 end
