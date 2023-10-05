@@ -1,5 +1,7 @@
 require "ordered_initializers"
 
+RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+
 RSpec.configure do |config|
 end
 

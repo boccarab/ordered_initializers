@@ -1,5 +1,11 @@
 module OrderedInitializers
   class Parser
+    class << self
+      def path
+        'config/initializers.yml'
+      end
+    end
+
     def initializer_files
       YAML.load(yml_file, aliases: true)
     rescue ArgumentError
@@ -9,11 +15,7 @@ module OrderedInitializers
     private
 
     def yml_file
-      File.read(Rails.root.join(path))
-    end
-
-    def path
-      'config/initializers.yml'
+      File.read(Rails.root.join(self.class.path))
     end
   end
 end

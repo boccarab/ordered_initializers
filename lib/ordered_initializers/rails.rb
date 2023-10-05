@@ -14,7 +14,7 @@ module OrderedInitializers
 
       OrderedInitializers.go
     rescue Errno::ENOENT => e
-      Rails.logger.info("Missing initializers.yml in config folder. Skip ordered_initializers")
+      Rails.logger.info("Missing file #{Parser.path}. Skip ordered_initializers")
     end
   end
 end

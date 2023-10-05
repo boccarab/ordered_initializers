@@ -10,7 +10,7 @@ describe OrderedInitializers::Parser do
 
   describe '.initializer_files' do
     before do
-      allow_any_instance_of(described_class).to receive(:path).and_return('initializers.yml')
+      allow(described_class).to receive(:path).and_return('initializers.yml')
     end
 
     subject(:initializer_files) { parser.initializer_files }
@@ -22,7 +22,7 @@ describe OrderedInitializers::Parser do
 
   describe '.yml_file' do
     before do
-      allow_any_instance_of(described_class).to receive(:path).and_return('initializers.yml')
+      allow(described_class).to receive(:path).and_return('initializers.yml')
     end
 
     subject(:yml_file) { parser.send(:yml_file) }
@@ -32,8 +32,8 @@ describe OrderedInitializers::Parser do
     end
   end
 
-  describe '.path' do
-    subject(:path) { parser.send(:path) }
+  describe '#path' do
+    subject(:path) { described_class.path }
 
     it 'returns the default path' do
       expect(path).to eq('config/initializers.yml')
