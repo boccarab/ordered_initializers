@@ -9,7 +9,7 @@ module OrderedInitializers
   module_function
 
   def go
-    initializer_files.each do |item|
+    initializer_files.each do |file|
       load_config_initializer(file)
     end
   end
