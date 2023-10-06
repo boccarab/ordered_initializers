@@ -4,7 +4,11 @@ require "ordered_initializers"
 module OrderedInitializers
   class Railtie < ::Rails::Railtie
     def load_initializer_file
-      OrderedInitializers.initializer_files = Parser.new.initializer_files
+      OrderedInitializers.initializer_files = parsed
+    end
+
+    def parsed
+      Parser.new.initializer_files
     end
 
     private

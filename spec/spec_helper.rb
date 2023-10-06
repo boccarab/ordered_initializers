@@ -3,8 +3,7 @@ require "ordered_initializers"
 RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
 
 RSpec.configure do |config|
-end
-
-def fixture_path(name)
-  File.join(File.expand_path("../fixtures", __FILE__), name)
+  # Reinit OrderedInitializers.initializer_files value
+  config.before { OrderedInitializers.initializer_files = nil }
+  config.after { OrderedInitializers.initializer_files = nil }
 end

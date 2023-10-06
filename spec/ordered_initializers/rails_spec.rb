@@ -27,7 +27,7 @@ describe OrderedInitializers::Railtie do
     Rails.application = nil
   end
 
-  context "before_initialize" do
+  describe "before_initialize" do
     before do
       allow(OrderedInitializers::Parser).to receive(:path).and_return(path)
     end
@@ -36,7 +36,7 @@ describe OrderedInitializers::Railtie do
       let(:path) { 'initializers.yml' }
 
       it "calls OrderedInitializer.go" do
-        expect(OrderedInitializers::Railtie.instance).to receive(:load_initializer_file).and_call_original
+        expect(described_class.instance).to receive(:load_initializer_file).and_call_original
         expect(OrderedInitializers).to receive(:go)
 
         ActiveSupport.run_load_hooks(:before_initialize)
@@ -47,13 +47,25 @@ describe OrderedInitializers::Railtie do
       let(:path) { 'foobar.yml' }
 
       it "does not call OrderedInitializer.go" do
-        expect(OrderedInitializers::Railtie.instance).to receive(:load_initializer_file).and_call_original
+        expect(described_class.instance).to receive(:load_initializer_file).and_call_original
         expect(OrderedInitializers).not_to receive(:go)
 
         expect(Rails.logger).to receive(:info).with(/Skip ordered_initializers/)
 
         ActiveSupport.run_load_hooks(:before_initialize)
       end
+    end
+  end
+
+  describe "#load_initializer_file" do
+    subject(:load_initializer_file) { described_class.instance.load_initializer_file }
+
+    it 'sets OrderedInitializers.initializer_files' do
+      allow(described_class.instance).to receive(:parsed).and_return(['fileA.rb', 'fileB.rb', 'fileC.rb'])
+
+      load_initializer_file
+
+      expect(OrderedInitializers.initializer_files).to eq(['fileA.rb', 'fileB.rb', 'fileC.rb'])
     end
   end
 end
