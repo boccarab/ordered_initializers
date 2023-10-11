@@ -4,6 +4,11 @@ require "ordered_initializers"
 
 module OrderedInitializers
   class Railtie < ::Rails::Railtie
+    rake_tasks do
+      path = File.expand_path(__dir__)
+      Dir.glob("#{path}/tasks/**/*.rake").each { |f| load f }
+    end
+
     def load_initializer_file
       OrderedInitializers.initializer_files = parsed
     end
@@ -19,7 +24,7 @@ module OrderedInitializers
 
       OrderedInitializers.go
     rescue Errno::ENOENT => e
-      Rails.logger.info("Missing file #{Parser.path}. Skip ordered_initializers")
+      ::Kernel.warn("Missing file #{Parser.path}! Please run `rake ordered_initializers:install` to generate the file. Skipping ordered_initializers for the moment")
     end
   end
 end
