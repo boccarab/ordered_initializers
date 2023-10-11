@@ -1,6 +1,7 @@
 #!/usr/bin/env rake
 
 require "rspec/core/rake_task"
+require "standard/rake"
 
 desc "Run all specs"
 RSpec::Core::RakeTask.new(:spec) do |t|
@@ -11,4 +12,4 @@ end
 path = File.expand_path(__dir__)
 Dir.glob("#{path}/tasks/**/*.rake").each { |f| import f }
 
-task default: [:spec]
+task default: [:spec, :standard]

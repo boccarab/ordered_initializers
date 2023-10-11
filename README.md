@@ -1,3 +1,4 @@
+According to [Rails doc](https://guides.rubyonrails.org/configuring.html#using-initializer-files)
 > After loading the framework and any gems in your application, Rails turns to loading initializers. An initializer is any Ruby file stored under config/initializers in your Rails application.
 The files in config/initializers are _sorted_ and _loaded_ _one by one_ as part of the load_config_initializers initializer.
 If an initializer has code that relies on code in another initializer, you can combine them into a single initializer instead. This makes the dependencies more explicit, and can help surface new concepts within your application. Rails also supports _numbering of initializer file names_, but this can lead to file name churn.

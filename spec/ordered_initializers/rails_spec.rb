@@ -33,9 +33,9 @@ describe OrderedInitializers::Railtie do
     end
 
     context "when the initializers.yml file is present" do
-      let(:path) { 'initializers.yml' }
+      let(:path) { "initializers.yml" }
 
-      it "calls OrderedInitializer.go" do
+      it "calls OrderedInitializers.go" do
         expect(described_class.instance).to receive(:load_initializer_file).and_call_original
         expect(OrderedInitializers).to receive(:go)
 
@@ -44,9 +44,9 @@ describe OrderedInitializers::Railtie do
     end
 
     fcontext "when the initializers.yml file is missing" do
-      let(:path) { 'foobar.yml' }
+      let(:path) { "foobar.yml" }
 
-      it "does not call OrderedInitializer.go" do
+      it "does not call OrderedInitializers.go" do
         expect(described_class.instance).to receive(:load_initializer_file).and_call_original
         expect(OrderedInitializers).not_to receive(:go)
 
@@ -60,12 +60,12 @@ describe OrderedInitializers::Railtie do
   describe "#load_initializer_file" do
     subject(:load_initializer_file) { described_class.instance.load_initializer_file }
 
-    it 'sets OrderedInitializers.initializer_files' do
-      allow(described_class.instance).to receive(:parsed).and_return(['fileA.rb', 'fileB.rb', 'fileC.rb'])
+    it "sets OrderedInitializers.initializer_files" do
+      allow(described_class.instance).to receive(:parsed).and_return(["fileA.rb", "fileB.rb", "fileC.rb"])
 
       load_initializer_file
 
-      expect(OrderedInitializers.initializer_files).to eq(['fileA.rb', 'fileB.rb', 'fileC.rb'])
+      expect(OrderedInitializers.initializer_files).to eq(["fileA.rb", "fileB.rb", "fileC.rb"])
     end
   end
 end

@@ -1,4 +1,4 @@
-require 'ordered_initializers/rails'
+require "ordered_initializers/rails"
 
 module OrderedInitializers
   class << self
