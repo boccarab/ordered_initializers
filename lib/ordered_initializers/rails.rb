@@ -1,5 +1,5 @@
-require 'rails'
-require 'ordered_initializers/parser'
+require "rails"
+require "ordered_initializers/parser"
 require "ordered_initializers"
 
 module OrderedInitializers
@@ -23,7 +23,7 @@ module OrderedInitializers
       load_initializer_file
 
       OrderedInitializers.go
-    rescue Errno::ENOENT => e
+    rescue Errno::ENOENT
       ::Kernel.warn("Missing file #{Parser.path}! Please run `rake ordered_initializers:install` to generate the file. Skipping ordered_initializers for the moment")
     end
   end

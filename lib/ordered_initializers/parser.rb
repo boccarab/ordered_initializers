@@ -2,14 +2,14 @@ module OrderedInitializers
   class Parser
     class << self
       def path
-        'config/initializers.yml'
+        "config/initializers.yml"
       end
     end
 
     def initializer_files
-      YAML.load(yml_file, aliases: true)
+      YAML.safe_load(yml_file, aliases: true)
     rescue ArgumentError
-      YAML.load(yml_file)
+      YAML.safe_load(yml_file)
     end
 
     private
