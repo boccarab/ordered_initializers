@@ -1,4 +1,5 @@
 require 'rails'
+require 'ordered_initializers/parser'
 require "ordered_initializers"
 
 module OrderedInitializers
