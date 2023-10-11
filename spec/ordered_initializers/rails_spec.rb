@@ -50,7 +50,7 @@ describe OrderedInitializers::Railtie do
         expect(described_class.instance).to receive(:load_initializer_file).and_call_original
         expect(OrderedInitializers).not_to receive(:go)
 
-        expect(Rails.logger).to receive(:info).with(/Skip ordered_initializers/)
+        expect(::Kernel).to receive(:warn).with(/Skipping ordered_initializers/)
 
         ActiveSupport.run_load_hooks(:before_initialize)
       end
