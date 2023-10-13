@@ -5,7 +5,13 @@ Gem::Specification.new "ordered_initializers" do |s|
   s.email = "boccarab@gmail.com"
   s.version = OrderedInitializers::VERSION
   s.description = s.summary = "Run your Rails application initializers file in the order you want."
-  s.files = ["lib/ordered_initializers.rb", "lib/ordered_initializers/rails.rb"]
+  s.files = `git ls-files -- lib/*`.split("\n")
+  s.files += ["LICENSE"]
+  s.test_files = `git ls-files -- spec/*`.split("\n")
+  s.extra_rdoc_files = ["README.md"]
+  s.rdoc_options = ["--charset=UTF-8"]
+  s.require_path = "lib"
+
   s.homepage = "https://rubygems.org/gems/ordered_initializers"
   s.license = "MIT"
 
