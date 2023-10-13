@@ -9,7 +9,7 @@ Gem::Specification.new "ordered_initializers" do |s|
   s.homepage = "https://rubygems.org/gems/ordered_initializers"
   s.license = "MIT"
 
-  s.add_dependency "railties", ">= 3.2"
+  s.add_dependency "railties", ">= 5.2", "< 8"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
